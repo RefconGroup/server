@@ -5,12 +5,14 @@ const mongoose = require("mongoose")
 
 const serviceRouter = require('./routes/services_router');
 
+// Handled By Heroku 
 const port = process.env.PORT || 3000
 
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+// .env Handled by Heroku 
 const dbConn = process.env.DBURL ? process.env.DBURL : 'mongodb://localhost/refcon_group'
 // Set four properties to avoid deprecation warnings:
 mongoose.connect(dbConn, {
@@ -32,7 +34,9 @@ app.use('/services', serviceRouter)
 
 // Testing Connection to Heroku
 app.get('/', (req, res) => {
-    res.send('got your request')
+    console.log(res);
+    console.log(req);
+    res.send('got your request');
 })
 
 app.listen(port, () => {
