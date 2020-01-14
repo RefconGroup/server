@@ -11,7 +11,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-const dbConn = 'mongodb://localhost/refcon_group'
+const dbConn = process.env.DBURL ? process.env.DBURL : 'mongodb://localhost/refcon_group'
 // Set four properties to avoid deprecation warnings:
 mongoose.connect(dbConn, {
         useNewUrlParser: true,
@@ -29,6 +29,11 @@ mongoose.connect(dbConn, {
 
 // routing
 app.use('/services', serviceRouter)
+
+// Testing Connection to Heroku
+app.get('/', (req, res) => {
+    res.send('got your request')
+})
 
 app.listen(port, () => {
 	console.log(`REFCON group MERN app listening on port ${port}`)
