@@ -10,7 +10,6 @@ const Service = new Schema({
     brief: {type: String,
             default: 'We offer a top quality service at an unbeatable price'}, 
     description: String
-    }
 });
 
 module.exports = mongoose.model('Service', Service);
