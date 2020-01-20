@@ -7,10 +7,9 @@ const Service = new Schema({
         required: true
     },
     picture: String,
-    description: String,
-    category: {
-        type: String,
-        enum:['Installation','Repairs','Supply']
+    brief: {type: String,
+            default: 'We offer a top quality service at an unbeatable price'}, 
+    description: String
     }
 });
 
